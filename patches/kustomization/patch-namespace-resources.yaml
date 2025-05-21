@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: this-is-ignored
+spec:
+  patches:
+    - patch: |-
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          labels:
+            goldilocks.fairwinds.com/enabled: true
+            prometheus.io/scrape: "true"
+      target:
+        kind: Namespace
